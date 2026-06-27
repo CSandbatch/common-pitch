@@ -40,8 +40,45 @@ From the workspace root:
 
 Open `http://127.0.0.1:8772/`.
 
+## Color Schemes (Locked)
+
+Common Pitch is the **source of truth** for the shared color system. It ships **exactly two** schemes, switched at runtime via `docs/app.js`. These are canonical. **Do not add, remove, rename, or recolor a scheme without explicit user approval** — no palette "refreshes," no extra themes, no token-value edits. The sister project `common-action` mirrors these; any approved change here must be propagated there.
+
+**Scheme A — `ultraviolet`** (default, defined on `:root`):
+
+| Token | Value | | Token | Value |
+|---|---|---|---|---|
+| `--carbon` | `#020a2b` | | `--blue-electric` | `#0038ff` |
+| `--carbon-soft` | `#07124a` | | `--blue` | `#163cff` |
+| `--paper` | `#eef1f6` | | `--blue-deep` | `#001c9e` |
+| `--paper-light` | `#fcfff6` | | `--signal` | `#efff00` |
+| `--paper-dark` | `#aabeff` | | `--on-dark-muted` | `#b8c3ff` |
+| `--ink` | `#061449` | | `--nav-muted` | `#e1e6ff` |
+| `--ink-muted` | `#465685` | | `--nav-rule` | `#8699f0` |
+| `--line` | `#5e72c9` | | `--surface-highlight` | `#c5ceff` |
+| `--reverse-line` | `#5167c4` | | `--footer-line` | `#3d51aa` |
+| `--control-line` | `#8ea0f0` | | `--grid-line` | `rgb(0 56 255 / 0.08)` |
+
+**Scheme B — `suited-chili`** (defined on `html[data-theme="suited-chili"]`):
+
+| Token | Value | | Token | Value |
+|---|---|---|---|---|
+| `--carbon` | `#160b0a` | | `--blue-electric` | `#e52614` |
+| `--carbon-soft` | `#2c1511` | | `--blue` | `#ff4b1f` |
+| `--paper` | `#f0e2cb` | | `--blue-deep` | `#68140c` |
+| `--paper-light` | `#fff5e6` | | `--signal` | `#ffd21f` |
+| `--paper-dark` | `#d8a15f` | | `--on-dark-muted` | `#e8b49e` |
+| `--ink` | `#2c0d08` | | `--nav-muted` | `#fff0e5` |
+| `--ink-muted` | `#75463b` | | `--nav-rule` | `#ff9b72` |
+| `--line` | `#b44732` | | `--surface-highlight` | `#ffd0bc` |
+| `--reverse-line` | `#a63b2b` | | `--footer-line` | `#7a251d` |
+| `--control-line` | `#d8795f` | | `--grid-line` | `rgb(104 20 12 / 0.1)` |
+
+Switcher invariants: default is `ultraviolet`; choice persists in `localStorage` key `common-pitch-theme`; an inline `<head>` bootstrap applies the stored scheme before first paint; `meta[name=theme-color]` tracks the active scheme (`#0038ff` / `#160b0a`).
+
 ## Project Rules
 
+- Color schemes are locked — see **Color Schemes (Locked)** above. This project is the source of truth; changes require explicit user approval and must be propagated to `common-action`.
 - Preserve the small, static deployment surface.
 - Do not invent partners, clients, metrics, publications, or project outcomes.
 - Treat provenance, uncertainty, and update state as interface elements.
