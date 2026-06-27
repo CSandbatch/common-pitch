@@ -12,6 +12,14 @@
     <meta property="og:url" content="https://www.common-action.org/">
     <title>Common Action — An argument cabinet for collective work</title>
     <link rel="canonical" href="https://www.common-action.org/">
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("common-pitch-theme") || "ultraviolet";
+      } catch {
+        document.documentElement.dataset.theme = "ultraviolet";
+      }
+    </script>
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
     <script type="application/ld+json">
@@ -45,6 +53,11 @@
         <a href="#methods">Methods</a>
         <a href="#protocols">Protocols</a>
       </nav>
+
+      <button class="theme-trigger" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-trigger-label">Color change</span>
+        <span class="theme-swatch" aria-hidden="true"></span>
+      </button>
 
       <button class="hand-trigger" type="button" data-open-hand>
         Your hand

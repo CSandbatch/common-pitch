@@ -12,6 +12,7 @@
   const presenterStage = document.querySelector("[data-presenter-stage]");
   const slideProgress = document.querySelector("[data-slide-progress]");
   const statusMessage = document.querySelector("[data-status-message]");
+  const themeToggle = document.querySelector("[data-theme-toggle]");
 
   let statusTimer;
   let activeSlide = 0;
@@ -40,6 +41,30 @@
     statusTimer = window.setTimeout(() => {
       statusMessage.classList.remove("is-visible");
     }, 2400);
+  };
+
+  const applyTheme = (theme, persist = true) => {
+    const suited = theme === "suited-chili";
+    const nextTheme = suited ? "suited-chili" : "ultraviolet";
+
+    document.documentElement.dataset.theme = nextTheme;
+    themeToggle.setAttribute("aria-pressed", String(suited));
+    themeToggle.title = suited
+      ? "Change color to ultraviolet bureaucracy"
+      : "Change color to suited chili";
+
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) {
+      themeColor.content = suited ? "#160b0a" : "#0038ff";
+    }
+
+    if (persist) {
+      try {
+        localStorage.setItem("common-pitch-theme", nextTheme);
+      } catch {
+        // The theme still changes when storage is unavailable.
+      }
+    }
   };
 
   const updateSelectionUI = () => {
@@ -244,6 +269,20 @@
       return;
     }
 
+    if (target.matches("[data-theme-toggle]")) {
+      const nextTheme =
+        document.documentElement.dataset.theme === "suited-chili"
+          ? "ultraviolet"
+          : "suited-chili";
+      applyTheme(nextTheme);
+      announce(
+        nextTheme === "suited-chili"
+          ? "Color changed: suited chili"
+          : "Color changed: ultraviolet bureaucracy"
+      );
+      return;
+    }
+
     if (target.matches("[data-collect]")) {
       toggleCard(target.closest("[data-card-id]").dataset.cardId);
       return;
@@ -322,5 +361,6 @@
   });
 
   restoreHandFromUrl();
+  applyTheme(document.documentElement.dataset.theme, false);
   updateSelectionUI();
 })();

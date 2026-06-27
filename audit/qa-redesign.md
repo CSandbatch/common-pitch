@@ -50,3 +50,12 @@ Horizontal overflow inside each card rail is intentional and locally contained.
 - Card rails retain intentional local horizontal scrolling.
 - Card selection and presenter mode remain operational.
 - No page errors or failed requests.
+
+## Theme-switch verification
+
+- “Color change” button is keyboard-operable and exposes `aria-pressed`.
+- Default Ultraviolet theme verified at 320, 390, 768, and 1440px.
+- Suited Chili theme verified at 320, 390, 768, and 1440px.
+- Theme choice persists through `localStorage` after reload.
+- Both themes retain exact document width at every tested viewport.
+- Suited Chili captures: `audit/screens/suited-chili-desktop.png` and `audit/screens/suited-chili-mobile.png`.

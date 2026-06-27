@@ -31,6 +31,23 @@ A visitor should be able to:
 
 Blue is the architecture. Highlighter yellow is the interruption. The scheme is deliberately overexposed: large process-blue fields collide with fluorescent yellow planes, while cold paper prevents the interface from collapsing into club graphics. There are no warm accent colors.
 
+### Alternate palette: suited chili
+
+“Like the Red Hot Chili Peppers put on a suit” translates heat into tailoring: the energy remains Californian, physical, and slightly indecent, but the structure becomes black-tie institutional.
+
+| Token | Value | Role |
+|---|---|---|
+| Espresso black | `#160b0a` | Tailored frame and footer |
+| Chili red | `#e52614` | Institutional planes and active controls |
+| Hot orange | `#ff4b1f` | Secondary heat |
+| Stage gold | `#ffd21f` | Selection and highlighter interruption |
+| Oxblood | `#68140c` | Card reverses and dense typography |
+| Cream stock | `#f0e2cb` | Working surface |
+| Ivory | `#fff5e6` | Card fronts |
+| Camel | `#d8a15f` | Method cards and stack depth |
+
+The palette avoids novelty-band merchandise. Espresso, oxblood, cream, and camel supply the suit; chili and stage gold supply the body inside it.
+
 ## Typography
 
 The system uses no external font dependencies.
@@ -69,6 +86,7 @@ Source-state labels use plain language:
 - **Open dossier:** inspect and reorder the assembled argument.
 - **Present hand:** convert the selected set into a full-screen sequence.
 - **Draw a card:** enter the cabinet through a non-linear route.
+- **Color change:** toggle between Ultraviolet Bureaucracy and Suited Chili; the preference persists locally.
 
 Motion is limited to state explanation: card emphasis, panel transitions, and presenter advancement.
 

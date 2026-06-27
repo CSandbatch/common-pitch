@@ -11,10 +11,41 @@
   --blue: #163cff;
   --signal: #efff00;
   --blue-deep: #001c9e;
+  --on-dark-muted: #b8c3ff;
+  --nav-muted: #e1e6ff;
+  --nav-rule: #8699f0;
+  --surface-highlight: #c5ceff;
+  --reverse-line: #5167c4;
+  --footer-line: #3d51aa;
+  --control-line: #8ea0f0;
+  --grid-line: rgb(0 56 255 / 0.08);
   --sans: Arial, "Helvetica Neue", sans-serif;
   --serif: Georgia, "Times New Roman", serif;
   --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --gutter: clamp(1rem, 2.6vw, 2.8rem);
+}
+
+html[data-theme="suited-chili"] {
+  --carbon: #160b0a;
+  --carbon-soft: #2c1511;
+  --paper: #f0e2cb;
+  --paper-light: #fff5e6;
+  --paper-dark: #d8a15f;
+  --ink: #2c0d08;
+  --ink-muted: #75463b;
+  --line: #b44732;
+  --blue-electric: #e52614;
+  --blue: #ff4b1f;
+  --signal: #ffd21f;
+  --blue-deep: #68140c;
+  --on-dark-muted: #e8b49e;
+  --nav-muted: #fff0e5;
+  --nav-rule: #ff9b72;
+  --surface-highlight: #ffd0bc;
+  --reverse-line: #a63b2b;
+  --footer-line: #7a251d;
+  --control-line: #d8795f;
+  --grid-line: rgb(104 20 12 / 0.1);
 }
 
 * {
@@ -31,7 +62,7 @@ body {
   overflow-x: clip;
   color: var(--ink);
   background:
-    linear-gradient(90deg, transparent calc(100% - 1px), rgb(0 56 255 / 0.08) 1px),
+    linear-gradient(90deg, transparent calc(100% - 1px), var(--grid-line) 1px),
     var(--paper);
   background-size: calc((100vw - (2 * var(--gutter))) / 8) 100%;
   background-position: var(--gutter) 0;
@@ -90,13 +121,61 @@ figure {
   top: 0;
   z-index: 50;
   display: grid;
-  grid-template-columns: 2fr 2fr 5fr auto;
+  grid-template-columns: 2fr 2fr 4fr auto auto;
   align-items: center;
   min-height: 4.6rem;
   padding: 0 var(--gutter);
   color: var(--paper-light);
   background: var(--blue-electric);
   border-bottom: 1px solid var(--signal);
+}
+
+html[data-theme="suited-chili"] .site-header {
+  background: var(--carbon);
+  border-bottom: 0.35rem solid var(--blue-electric);
+}
+
+html[data-theme="suited-chili"] .identity-seal {
+  color: var(--paper-light);
+  background: var(--blue-electric);
+}
+
+html[data-theme="suited-chili"] .theme-trigger {
+  border-color: var(--signal);
+}
+
+.theme-trigger {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  margin-left: 1rem;
+  padding: 0.42rem 0.48rem 0.42rem 0.68rem;
+  color: var(--paper-light);
+  background: transparent;
+  border: 1px solid var(--nav-muted);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.theme-swatch {
+  position: relative;
+  display: block;
+  width: 1.4rem;
+  height: 1.4rem;
+  overflow: hidden;
+  background: var(--signal);
+  border: 1px solid var(--paper-light);
+}
+
+.theme-swatch::after {
+  position: absolute;
+  inset: 0 50% 0 0;
+  background: var(--blue-electric);
+  content: "";
 }
 
 .identity {
@@ -125,7 +204,7 @@ figure {
   gap: 0.5rem;
   align-items: center;
   margin: 0;
-  color: #c5ceff;
+  color: var(--surface-highlight);
   font-family: var(--mono);
   font-size: 0.64rem;
   letter-spacing: 0.04em;
@@ -146,11 +225,11 @@ nav {
 }
 
 nav a {
-  color: #e1e6ff;
+  color: var(--nav-muted);
   font-family: var(--mono);
   font-size: 0.64rem;
   letter-spacing: 0.04em;
-  text-decoration-color: #8699f0;
+  text-decoration-color: var(--nav-rule);
   text-underline-offset: 0.25rem;
   text-transform: uppercase;
 }
@@ -575,7 +654,7 @@ h1 span:last-child {
 }
 
 .card-infrastructure .card-kind {
-  color: #c5ceff;
+  color: var(--surface-highlight);
 }
 
 .card-infrastructure .collect-button {
@@ -648,7 +727,7 @@ h1 span:last-child {
 
 .card-back .card-kind,
 .card-back dt {
-  color: #b8c3ff;
+  color: var(--on-dark-muted);
 }
 
 .card-body h3 {
@@ -668,7 +747,7 @@ h1 span:last-child {
 
 .card-body dl {
   margin: 2rem 0;
-  border-top: 1px solid #5167c4;
+  border-top: 1px solid var(--reverse-line);
 }
 
 .card-body dl > div {
@@ -676,7 +755,7 @@ h1 span:last-child {
   grid-template-columns: 5rem 1fr;
   gap: 1rem;
   padding: 0.7rem 0;
-  border-bottom: 1px solid #5167c4;
+  border-bottom: 1px solid var(--reverse-line);
 }
 
 .card-body dt {
@@ -793,7 +872,7 @@ h1 span:last-child {
 }
 
 .footer-contact > p {
-  color: #b8c3ff;
+  color: var(--on-dark-muted);
 }
 
 .footer-contact a {
@@ -810,8 +889,8 @@ h1 span:last-child {
   grid-template-columns: repeat(4, 1fr);
   align-self: end;
   padding-top: 1rem;
-  color: #b8c3ff;
-  border-top: 1px solid #3d51aa;
+  color: var(--on-dark-muted);
+  border-top: 1px solid var(--footer-line);
 }
 
 .footer-register p {
@@ -1024,7 +1103,7 @@ dialog::backdrop {
   gap: 1rem;
   align-items: center;
   padding: 1rem var(--gutter);
-  border-bottom: 1px solid #5167c4;
+  border-bottom: 1px solid var(--reverse-line);
   font-family: var(--mono);
   font-size: 0.64rem;
   text-transform: uppercase;
@@ -1040,7 +1119,7 @@ dialog::backdrop {
   padding: 0.65rem 0.8rem;
   color: var(--paper-light);
   background: transparent;
-  border: 1px solid #8ea0f0;
+  border: 1px solid var(--control-line);
   font-family: var(--mono);
   font-size: 0.62rem;
   text-transform: uppercase;
@@ -1094,12 +1173,12 @@ dialog::backdrop {
 
 .presenter-controls {
   grid-template-columns: auto 1fr auto;
-  border-top: 1px solid #5167c4;
+  border-top: 1px solid var(--reverse-line);
   border-bottom: 0;
 }
 
 .presenter-controls p {
-  color: #b8c3ff;
+  color: var(--on-dark-muted);
   text-align: center;
 }
 
@@ -1141,7 +1220,7 @@ dialog::backdrop {
 
 @media (max-width: 980px) {
   .site-header {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     row-gap: 0.6rem;
     padding-top: 0.7rem;
     padding-bottom: 0.7rem;
@@ -1149,6 +1228,11 @@ dialog::backdrop {
 
   .system-state {
     justify-self: end;
+  }
+
+  .theme-trigger {
+    grid-column: 3;
+    grid-row: 1;
   }
 
   nav {
@@ -1259,6 +1343,20 @@ dialog::backdrop {
     max-width: 7rem;
     font-size: 0.55rem;
     text-align: right;
+  }
+
+  .theme-trigger {
+    margin-left: 0.4rem;
+    padding: 0.3rem;
+  }
+
+  .theme-trigger-label {
+    font-size: 0;
+  }
+
+  .theme-trigger-label::after {
+    font-size: 0.5rem;
+    content: "Color";
   }
 
   nav {
