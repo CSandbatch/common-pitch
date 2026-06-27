@@ -48,6 +48,6 @@
 | Client-side simulated package generator (seam for Worker `/consult`) | ✅ |
 | Fixed dummy price + mock payment + mock scheduling | ✅ |
 | End-to-end flow verified (all 4 steps, both color schemes) | ✅ |
-| **Backend:** Cloudflare Worker + Claude `/consult` (structured output, cached prompt) | ⬜ |
+| **Backend:** Cloudflare Worker + OpenRouter free endpoint `/consult` (`:free` model, JSON mode, key in Worker secret) | ⬜ |
 | **Backend:** Stripe Checkout + webhook + real scheduler | ⬜ |
 | Package emailed to ellie@common-action.org on booking | ⬜ |

@@ -35,7 +35,7 @@
 2. Group cards by type: Field → focus areas, Method → methods, Protocol → working protocols, Thesis/Problem/Institutional claim → framing.
 3. Compose a structured package (summary, sections, per-card discussion points) from the cards' own labeled content — invent nothing.
 4. Render the package as the first step of the checkout flow.
-5. **Mockup note:** generation is simulated client-side. To go live, replace the generator body with a Worker `/consult` call returning the same shape (Claude, structured output, cached system prompt + card catalog).
+5. **Mockup note:** generation is simulated client-side. To go live, replace the generator body with a Worker `/consult` call returning the same shape. The Worker calls **OpenRouter's free endpoint** (OpenAI-compatible `chat/completions`, a `:free` model, JSON mode + parse-and-validate since free models don't guarantee strict json_schema); the OpenRouter API key lives in a Worker secret.
 
 ## Process: Mock Checkout & Booking
 

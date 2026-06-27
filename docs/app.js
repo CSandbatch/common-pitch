@@ -269,7 +269,10 @@
   // Compose a structured, source-grounded package from the selected cards.
   // NOTE: this is the simulated generator. To go live, replace the body with a
   // `fetch("<worker>/consult", { method: "POST", body: JSON.stringify({ hand }) })`
-  // call returning the same shape; the rest of the flow is unchanged.
+  // call returning the same shape; the rest of the flow is unchanged. The Worker
+  // calls OpenRouter's free endpoint (OpenAI-compatible
+  // https://openrouter.ai/api/v1/chat/completions, a `:free` model, JSON mode);
+  // the OpenRouter API key stays in a Worker secret — never in this file.
   const generatePackage = (cards) => {
     const data = cards.map(cardData);
     const byType = (t) => data.filter((c) => c.type === t);
