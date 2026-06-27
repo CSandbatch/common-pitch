@@ -7,8 +7,8 @@
 **Client:** Common Action — experimental pitch interface  
 **Source site:** https://www.common-action.org/  
 **Stack:** Dependency-free static HTML, CSS, and JavaScript  
-**Hosting target:** Not yet configured  
-**Current phase:** Phase 3 — build complete
+**Hosting target:** GitHub Pages from `main/docs`  
+**Current phase:** Phase 4 — hosted preview live
 
 ## Governing Design Claim
 

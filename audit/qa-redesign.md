@@ -2,7 +2,7 @@
 
 **Date:** 2026-06-26  
 **Target:** Local redesign in `docs/`  
-**Publication status:** Ready for the independent `common-pitch` repository
+**Publication status:** Deployed to `https://csandbatch.github.io/common-pitch/`
 
 ## Responsive rendering
 

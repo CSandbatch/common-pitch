@@ -14,8 +14,8 @@ Self-contained agent system for the Common Action argument-cabinet pitch project
 
 **Client:** Common Action — experimental pitch interface  
 **Source site:** https://www.common-action.org/  
-**Current phase:** Phase 3 — build complete  
-**Gate:** Stakeholder review before any hosted deployment
+**Current phase:** Phase 4 — GitHub Pages live  
+**Gate:** Optional stakeholder review and custom-domain decision
 
 ## Key Files
 

@@ -3,9 +3,10 @@
 An experimental argument-cabinet and deck engine for [Common Action](https://www.common-action.org/).
 
 **Stack:** Static HTML and CSS  
-**Status:** Phase 3 — build complete  
+**Status:** Phase 4 — GitHub Pages live  
 **Production files:** `docs/`
 **Repository:** https://github.com/CSandbatch/common-pitch
+**Live site:** https://csandbatch.github.io/common-pitch/
 
 ## Preview
 
@@ -25,4 +26,4 @@ Then open `http://127.0.0.1:8772/`.
 | Deck-engine design system | Complete |
 | Responsive interactive build | Complete |
 | Local visual and interaction QA | Complete |
-| Hosted deployment | Awaiting explicit approval |
+| GitHub Pages deployment | Complete |
