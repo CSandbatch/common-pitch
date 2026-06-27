@@ -40,3 +40,13 @@ Horizontal overflow inside each card rail is intentional and locally contained.
 
 - `audit/screens/redesign-desktop.png`
 - `audit/screens/redesign-mobile.png`
+- `audit/screens/ultraviolet-desktop.png`
+- `audit/screens/ultraviolet-mobile.png`
+
+## Ultraviolet palette verification
+
+- Blue/highlighter-yellow revision rendered at 320, 390, 768, and 1440px.
+- No document-level horizontal overflow at any tested width.
+- Card rails retain intentional local horizontal scrolling.
+- Card selection and presenter mode remain operational.
+- No page errors or failed requests.

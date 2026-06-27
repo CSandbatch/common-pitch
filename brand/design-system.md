@@ -16,21 +16,20 @@ A visitor should be able to:
 4. share or present that hand as a contextual dossier.
 5. Contact Common Action directly.
 
-## Palette
+## Palette: ultraviolet bureaucracy
 
 | Token | Value | Role |
 |---|---|---|
-| Carbon | `#181a19` | Institutional frame, reverses, footer |
-| Paper | `#e9e2d2` | Working surface |
-| Paper light | `#f4efe4` | Card fronts |
-| Paper dark | `#d8cdb8` | Depth and stack shadow |
-| Ink | `#151817` | Primary text |
-| Vermilion | `#e54b2d` | Thesis and problem index |
-| Cobalt | `#2850c8` | Interface actions and field index |
-| Signal | `#d5e640` | Selected state and provisional signal |
-| Plum | `#6e2848` | Methods and open-science appendix |
+| Blue-black | `#020a2b` | Institutional frame, reverses, footer |
+| Process blue | `#0038ff` | Navigation, actions, major fields |
+| Electric blue | `#163cff` | Structural emphasis |
+| Deep blue | `#001c9e` | Dense fields and blue-plane typography |
+| Highlighter yellow | `#efff00` | Selection, interruption, provisional state |
+| Cold paper | `#eef1f6` | Working surface |
+| Optical white | `#fcfff6` | Card fronts |
+| Periwinkle stock | `#aabeff` | Method cards, depth, stack shadow |
 
-Color encodes card family and state. It is not atmospheric garnish.
+Blue is the architecture. Highlighter yellow is the interruption. The scheme is deliberately overexposed: large process-blue fields collide with fluorescent yellow planes, while cold paper prevents the interface from collapsing into club graphics. There are no warm accent colors.
 
 ## Typography
 
