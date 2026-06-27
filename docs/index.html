@@ -626,11 +626,87 @@
         <ol class="hand-list" data-hand-list></ol>
 
         <footer class="dialog-actions">
+          <button type="button" class="primary-dialog-button" data-consult>Build consultation package</button>
           <button type="button" data-present>Present hand</button>
           <button type="button" data-share>Copy share link</button>
           <button type="button" class="quiet-button" data-clear-hand>Clear</button>
         </footer>
       </form>
+    </dialog>
+
+    <dialog class="consult-dialog" data-consult-dialog aria-labelledby="consult-title">
+      <div class="consult-shell">
+        <header class="consult-header">
+          <div>
+            <p class="consult-eyebrow" data-consult-eyebrow>PERSONALIZED PACKAGE / DRAFT</p>
+            <h2 id="consult-title" data-consult-heading>Your consultation package</h2>
+          </div>
+          <button type="button" class="dialog-close" data-consult-close>Close</button>
+        </header>
+
+        <ol class="consult-progress" data-consult-progress aria-label="Checkout progress">
+          <li data-progress-step="package">Package</li>
+          <li data-progress-step="checkout">Payment</li>
+          <li data-progress-step="schedule">Schedule</li>
+          <li data-progress-step="done">Confirmed</li>
+        </ol>
+
+        <!-- Step: generating -->
+        <section class="consult-step" data-consult-step="loading" hidden>
+          <p class="consult-loading"><span class="consult-spinner" aria-hidden="true"></span> Assembling your package from the cards in your hand…</p>
+        </section>
+
+        <!-- Step: package -->
+        <section class="consult-step" data-consult-step="package" hidden>
+          <div class="package-body" data-package-body></div>
+          <footer class="consult-actions">
+            <p class="package-price"><span>Consultation</span><strong data-package-price>$0</strong></p>
+            <button type="button" class="primary-dialog-button" data-consult-checkout>Proceed to checkout</button>
+          </footer>
+        </section>
+
+        <!-- Step: checkout (mock) -->
+        <section class="consult-step" data-consult-step="checkout" hidden>
+          <p class="consult-note">Mockup checkout — no real payment is processed.</p>
+          <div class="checkout-grid">
+            <form class="mock-pay-form" data-mock-pay novalidate>
+              <label>Full name<input type="text" name="name" placeholder="Ada Lovelace" autocomplete="name"></label>
+              <label>Email<input type="email" name="email" placeholder="you@org.org" autocomplete="email"></label>
+              <label>Card number<input type="text" name="card" placeholder="4242 4242 4242 4242" inputmode="numeric"></label>
+              <div class="mock-pay-row">
+                <label>Expiry<input type="text" name="exp" placeholder="04 / 27"></label>
+                <label>CVC<input type="text" name="cvc" placeholder="123" inputmode="numeric"></label>
+              </div>
+            </form>
+            <aside class="order-summary" data-order-summary>
+              <p class="order-summary-title">Order</p>
+              <div data-order-lines></div>
+              <p class="order-total"><span>Total</span><strong data-order-total>$0</strong></p>
+            </aside>
+          </div>
+          <footer class="consult-actions">
+            <button type="button" class="quiet-button" data-consult-back="package">Back</button>
+            <button type="button" class="primary-dialog-button" data-consult-pay>Pay <span data-pay-amount>$0</span></button>
+          </footer>
+        </section>
+
+        <!-- Step: schedule (mock) -->
+        <section class="consult-step" data-consult-step="schedule" hidden>
+          <p class="consult-note">Payment received (mock). Choose a slot — scheduling is a mockup.</p>
+          <div class="slot-grid" data-slot-grid role="group" aria-label="Available consultation slots"></div>
+          <footer class="consult-actions">
+            <button type="button" class="primary-dialog-button" data-consult-confirm disabled>Confirm booking</button>
+          </footer>
+        </section>
+
+        <!-- Step: done -->
+        <section class="consult-step" data-consult-step="done" hidden>
+          <div class="consult-done" data-consult-done></div>
+          <footer class="consult-actions">
+            <button type="button" class="primary-dialog-button" data-consult-finish>Done</button>
+          </footer>
+        </section>
+      </div>
     </dialog>
 
     <dialog class="presenter-dialog" data-presenter-dialog aria-labelledby="presenter-title">

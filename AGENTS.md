@@ -23,7 +23,7 @@ Self-contained agent system for the Common Action argument-cabinet pitch project
 |---|---|
 | `docs/index.html` | Production page and GitHub Pages source |
 | `docs/styles.css` | Production design system |
-| `docs/app.js` | Deck, hand, sharing, and presenter interactions |
+| `docs/app.js` | Deck, hand, sharing, presenter, color switcher, and the consultation-package + mock checkout flow |
 | `brand/design-system.md` | Visual and interaction specification |
 | `audit/content-inventory.md` | Source-content record |
 | `audit/design-inventory.md` | Original-site design audit |

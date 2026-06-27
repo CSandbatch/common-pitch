@@ -1631,3 +1631,444 @@ dialog::backdrop {
     transform: none;
   }
 }
+
+/* --- Consultation package + mock checkout --------------------------------- */
+.consult-dialog {
+  width: min(60rem, calc(100vw - 2rem));
+  height: min(46rem, calc(100vh - 2rem));
+  padding: 0;
+  color: var(--ink);
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+}
+
+.consult-shell {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+}
+
+.consult-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.consult-header h2 {
+  margin: 0.2rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+}
+
+.consult-eyebrow {
+  margin: 0;
+  color: var(--blue-electric);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.consult-progress {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0.8rem clamp(1.2rem, 3vw, 2rem);
+  list-style: none;
+  border-bottom: 1px solid var(--line);
+  counter-reset: step;
+}
+
+.consult-progress li {
+  counter-increment: step;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.consult-progress li::before {
+  content: counter(step) " ";
+  color: var(--nav-rule);
+}
+
+.consult-progress li:not(:last-child)::after {
+  content: " ·";
+  margin: 0 0.3rem 0 0.4rem;
+  color: var(--line);
+}
+
+.consult-progress li.is-active {
+  color: var(--ink);
+}
+
+.consult-progress li.is-active::before {
+  color: var(--blue-electric);
+}
+
+.consult-step {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.consult-step[hidden] {
+  display: none;
+}
+
+.consult-step[data-consult-step="loading"] {
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.consult-loading {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.consult-spinner {
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid var(--line);
+  border-top-color: var(--blue-electric);
+  border-radius: 50%;
+  animation: consult-spin 0.7s linear infinite;
+}
+
+@keyframes consult-spin {
+  to { transform: rotate(360deg); }
+}
+
+.package-body,
+.checkout-grid,
+.slot-grid,
+.consult-done {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+.package-summary {
+  margin-top: 0;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.package-section {
+  margin-top: 1.4rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+
+.package-section h3 {
+  margin: 0 0 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.package-section ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.package-points {
+  list-style: none;
+  padding-left: 0;
+}
+
+.package-points li {
+  padding: 0.7rem 0;
+  border-bottom: 1px dotted var(--line);
+}
+
+.package-points strong {
+  font-size: 0.95rem;
+}
+
+.point-type {
+  margin-left: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--blue-electric);
+}
+
+.package-points p {
+  margin: 0.3rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.package-disclaimer {
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.consult-actions {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1rem clamp(1.2rem, 3vw, 2rem);
+  border-top: 1px solid var(--ink);
+}
+
+.package-price {
+  margin: 0 auto 0 0;
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+}
+
+.package-price strong {
+  font-size: 1.1rem;
+  color: var(--ink);
+}
+
+.primary-dialog-button {
+  padding: 0.75rem 1.2rem;
+  color: var(--paper-light);
+  background: var(--blue-electric);
+  border: 1px solid var(--blue-electric);
+  font-family: var(--mono);
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.primary-dialog-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.consult-note {
+  margin: 0;
+  padding: 0.8rem clamp(1.2rem, 3vw, 2rem);
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: var(--surface-highlight);
+  border-bottom: 1px solid var(--line);
+}
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+  align-content: start;
+}
+
+.mock-pay-form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.mock-pay-form label,
+.mock-pay-row label {
+  display: grid;
+  gap: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.mock-pay-form input {
+  padding: 0.6rem 0.7rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+.mock-pay-form input:focus-visible {
+  outline: 2px solid var(--blue-electric);
+  outline-offset: 1px;
+}
+
+.mock-pay-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.order-summary {
+  align-self: start;
+  padding: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.order-summary-title {
+  margin: 0 0 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+
+.order-line-muted {
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.8rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--ink);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.7rem;
+  align-content: start;
+}
+
+.slot {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.8rem;
+  text-align: left;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  cursor: pointer;
+}
+
+.slot:hover {
+  border-color: var(--blue-electric);
+}
+
+.slot.is-selected {
+  color: var(--paper-light);
+  background: var(--blue-electric);
+  border-color: var(--blue-electric);
+}
+
+.slot-day {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.slot-time {
+  font-size: 1.05rem;
+}
+
+.consult-done {
+  text-align: center;
+}
+
+.done-check {
+  display: grid;
+  place-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem;
+  color: var(--paper-light);
+  background: var(--blue-electric);
+  border-radius: 50%;
+  font-size: 1.4rem;
+}
+
+.done-lead {
+  margin: 0 0 1.3rem;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+}
+
+.done-detail {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 26rem;
+  margin: 0 auto 1.3rem;
+  text-align: left;
+}
+
+.done-detail div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.done-detail dt {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.done-detail dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 700px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consult-spinner {
+    animation-duration: 2s;
+  }
+}

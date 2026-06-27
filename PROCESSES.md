@@ -29,6 +29,21 @@
 3. Inspect overflow, contrast, hierarchy, and reading order.
 4. Correct defects and repeat the capture.
 
+## Process: Consultation Package Generation
+
+1. Read the visitor's `Hand` (selected card IDs) from client state.
+2. Group cards by type: Field → focus areas, Method → methods, Protocol → working protocols, Thesis/Problem/Institutional claim → framing.
+3. Compose a structured package (summary, sections, per-card discussion points) from the cards' own labeled content — invent nothing.
+4. Render the package as the first step of the checkout flow.
+5. **Mockup note:** generation is simulated client-side. To go live, replace the generator body with a Worker `/consult` call returning the same shape (Claude, structured output, cached system prompt + card catalog).
+
+## Process: Mock Checkout & Booking
+
+1. Show the package with a fixed price; advance to a simulated payment form.
+2. Capture name/email (no real payment); advance to mock time-slot selection.
+3. On slot confirmation, show a booking confirmation labeled as a mockup.
+4. **To go live:** Worker endpoints for Stripe Checkout + a real scheduler, with a webhook emailing the package to ellie@common-action.org.
+
 ## Process: Launch
 
 1. Obtain stakeholder approval.
