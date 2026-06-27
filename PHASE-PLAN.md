@@ -1,0 +1,41 @@
+# Common Pitch — Phase Plan
+
+**Last updated:** 2026-06-26
+
+## Phase 1 — Audit ✅ COMPLETE
+
+| Task | Status |
+|---|---|
+| Source HTML extraction | ✅ |
+| Source content boundary | ✅ |
+| AI-design failure brief synthesis | ✅ |
+| Deck-engine concept synthesis | ✅ |
+
+## Phase 2 — Design System ✅ COMPLETE
+
+| Task | Status |
+|---|---|
+| Argument-cabinet direction | ✅ |
+| Card content model | ✅ |
+| Provenance grammar | ✅ |
+| Responsive interaction model | ✅ |
+
+## Phase 3 — Build ✅ COMPLETE
+
+| Task | Status |
+|---|---|
+| Semantic card cabinet | ✅ |
+| Card front/reverse behavior | ✅ |
+| Visitor-built hand and dossier | ✅ |
+| Share-state URLs | ✅ |
+| Keyboard presenter mode | ✅ |
+| Local responsive QA | ✅ |
+
+## Phase 4 — Launch ⬜ PENDING
+
+| Task | Status |
+|---|---|
+| Stakeholder review | ⬜ |
+| Hosting decision | ⬜ |
+| Production deployment | ⬜ |
+| Post-deploy verification | ⬜ |
