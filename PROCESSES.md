@@ -35,14 +35,14 @@
 2. Group cards by type: Field → focus areas, Method → methods, Protocol → working protocols, Thesis/Problem/Institutional claim → framing.
 3. Compose a structured package (summary, sections, per-card discussion points) from the cards' own labeled content — invent nothing.
 4. Render the package as the first step of the checkout flow.
-5. **Mockup note:** generation is simulated client-side. To go live, replace the generator body with a Worker `/consult` call returning the same shape. The Worker calls **OpenRouter's free endpoint** (OpenAI-compatible `chat/completions`, a `:free` model, JSON mode + parse-and-validate since free models don't guarantee strict json_schema); the OpenRouter API key lives in a Worker secret.
+5. **Mockup note:** generation is simulated client-side; no network call happens today. To go live, replace the generator body with a Worker `/consult` call returning the same shape. The Worker calls **OpenRouter's free endpoint** (OpenAI-compatible `chat/completions`, a `:free` model, JSON mode + parse-and-validate since free models don't guarantee strict json_schema); the OpenRouter API key lives in a Worker secret, never in this repo.
 
 ## Process: Mock Checkout & Booking
 
-1. Show the package with a fixed price; advance to a simulated payment form.
+1. Show the package with a fixed dummy price ($750); advance to a simulated payment form.
 2. Capture name/email (no real payment); advance to mock time-slot selection.
 3. On slot confirmation, show a booking confirmation labeled as a mockup.
-4. **To go live:** Worker endpoints for Stripe Checkout + a real scheduler, with a webhook emailing the package to ellie@common-action.org.
+4. **To go live:** Worker endpoints for Stripe Checkout + a real scheduler, with a webhook emailing the package to ellie@common-action.org. Until then, do not represent this flow as real to a stakeholder.
 
 ## Process: Launch
 

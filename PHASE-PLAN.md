@@ -1,53 +1,32 @@
 # Common Pitch — Phase Plan
 
-**Last updated:** 2026-06-26
+**Current phase:** Phase 5 — Consultation checkout (in progress)
 
-## Phase 1 — Audit ✅ COMPLETE
+Completed-phase detail (Phases 1–4: audit, design system, build, launch) lives
+in `MEMORY.md` → Phase history. This file states only where the repo stands
+now and what has to land before it moves.
 
-| Task | Status |
-|---|---|
-| Source HTML extraction | ✅ |
-| Source content boundary | ✅ |
-| AI-design failure brief synthesis | ✅ |
-| Deck-engine concept synthesis | ✅ |
-
-## Phase 2 — Design System ✅ COMPLETE
+## Phase 5 — Consultation checkout
 
 | Task | Status |
 |---|---|
-| Argument-cabinet direction | ✅ |
-| Card content model | ✅ |
-| Provenance grammar | ✅ |
-| Responsive interaction model | ✅ |
+| Consultation-package flow (hand → package → checkout → schedule → confirm) | Done (mockup) |
+| Client-side simulated package generator (seam for Worker `/consult`) | Done |
+| Fixed dummy price + mock payment + mock scheduling | Done |
+| End-to-end flow verified (all 4 steps, both color schemes) | Done |
+| Cloudflare Worker + OpenRouter free endpoint `/consult` (`:free` model, JSON mode, key in Worker secret) | Not started |
+| Stripe Checkout + webhook + real scheduler | Not started |
+| Package emailed to ellie@common-action.org on booking | Not started |
 
-## Phase 3 — Build ✅ COMPLETE
+## Gate to Phase 6
 
-| Task | Status |
-|---|---|
-| Semantic card cabinet | ✅ |
-| Card front/reverse behavior | ✅ |
-| Visitor-built hand and dossier | ✅ |
-| Share-state URLs | ✅ |
-| Keyboard presenter mode | ✅ |
-| Local responsive QA | ✅ |
+Phase 6 (live backend) opens when all four land:
 
-## Phase 4 — Launch ✅ COMPLETE
+1. A Worker `/consult` endpoint is deployed and returns the same package
+   shape the client-side generator produces today.
+2. Stripe Checkout replaces the mock payment step.
+3. A real scheduler replaces the fake time-slot picker.
+4. Booking confirmation triggers the email to ellie@common-action.org.
 
-| Task | Status |
-|---|---|
-| Stakeholder deployment instruction | ✅ |
-| Hosting decision | ✅ |
-| GitHub Pages deployment | ✅ |
-| Post-deploy verification | ✅ |
-
-## Phase 5 — Consultation checkout 🔄 IN PROGRESS
-
-| Task | Status |
-|---|---|
-| Consultation-package flow (hand → package → checkout → schedule → confirm) | ✅ Mockup |
-| Client-side simulated package generator (seam for Worker `/consult`) | ✅ |
-| Fixed dummy price + mock payment + mock scheduling | ✅ |
-| End-to-end flow verified (all 4 steps, both color schemes) | ✅ |
-| **Backend:** Cloudflare Worker + OpenRouter free endpoint `/consult` (`:free` model, JSON mode, key in Worker secret) | ⬜ |
-| **Backend:** Stripe Checkout + webhook + real scheduler | ⬜ |
-| Package emailed to ellie@common-action.org on booking | ⬜ |
+Until then, Phase 5 stands, and the flow stays labeled as a mockup in the UI —
+do not represent it as live to a stakeholder or in a report.

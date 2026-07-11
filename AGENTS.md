@@ -1,21 +1,38 @@
 # Common Pitch — Agent Doctrine
 
-Self-contained agent system for the Common Action argument-cabinet pitch project.
+## Mission
 
-## Session Start Checklist
+Common Pitch is the interactive cut of Common Action: a "rhetoric machine" —
+an argument cabinet where visitors inspect, select, share, and present
+source-labeled argument cards, rather than reading a linear brochure. It has a
+sister site, **Common Action** (`../common-action/`), same organization,
+different posture: the canonical top-to-bottom memorandum. Common Pitch is the
+persuasion instrument; Common Action is the evidentiary brochure. A visitor's
+hand of cards can resolve into a personalized consultation package with a
+checkout + scheduling flow — currently a mockup (see **The `/consult` seam**,
+below).
 
-1. Read this file.
-2. Read `CLAUDE.md`.
-3. Read the last 30 lines of `MEMORY.md`.
-4. Confirm the current phase in `PHASE-PLAN.md`.
-5. Read `../../SANDBATCH.md` and `COMMON_PITCH_SANDBATCH.md` before editorial or critique work.
+## Doctrine block (non-negotiable)
 
-## Project Context
+- **Never invent** partners, clients, metrics, publications, quotes, or
+  outcomes. Unsourced facts are marked unsourced or left out.
+- **Never present** proposed copy as a verified result.
+- **Locked invariants are locked.** The `ultraviolet` / `suited-chili` color
+  schemes and canonical token values below — no change without explicit user
+  approval, and any approved change must be propagated to `common-action` in
+  the same session.
+- **Ask before the irreversible:** pushing, deleting, force operations, or
+  touching anything holding credentials.
+- **Report faithfully.** A failing check is reported failing, with output.
+  Skipped steps are named. Done means verified by serving `docs/` and looking.
 
-**Client:** Common Action — experimental pitch interface  
-**Source site:** https://www.common-action.org/  
-**Current phase:** Phase 4 — GitHub Pages live  
-**Gate:** Optional stakeholder review and custom-domain decision
+**Voice floor** (full spec: root `VOICE.md`, if present — this repo stands
+alone without it): plain, concrete, verdict-first. Lead with the result, then
+the reason. Name the file, the token, the command — not "the theming is
+persisted," but "the switcher writes `common-pitch-theme` to `localStorage`."
+Name uncertainty out loud instead of manufacturing confidence. No corporate
+filler (*seamless, leverage, streamline, delve*), no hype, no reflexive
+apology. A list is a list; a judgment is a sentence.
 
 ## Key Files
 
@@ -27,22 +44,36 @@ Self-contained agent system for the Common Action argument-cabinet pitch project
 | `brand/design-system.md` | Visual and interaction specification |
 | `audit/content-inventory.md` | Source-content record |
 | `audit/design-inventory.md` | Original-site design audit |
-| `PHASE-PLAN.md` | Phase status |
-| `MEMORY.md` | Chronological change log |
+| `ONTOLOGY.md` | Entity taxonomy (cards, decks, hands, packages, sessions) |
+| `PROCESSES.md` | Ordered procedures this repo runs |
+| `SKILLS.md` | Task class → process + gate |
+| `PHASE-PLAN.md` | Current phase and the gate to the next one |
+| `MEMORY.md` | Durable facts and dated change log |
 
-## Local Preview
+## Run / Gate
 
-From the workspace root:
+Local preview, from the workspace root:
 
 ```powershell
 .venv\Scripts\python.exe -m http.server 8772 --directory projects/common-pitch/docs
 ```
 
-Open `http://127.0.0.1:8772/`.
+Or from this repo directly: `python -m http.server 8772 --directory docs`. Open
+`http://127.0.0.1:8772/`.
+
+**Gate:** serve `docs/` and exercise the deck/hand/share/present flow plus the
+consultation + mock-checkout flow end to end, in both color schemes. See
+`SKILLS.md` for the gate per task class.
 
 ## Color Schemes (Locked)
 
-Common Pitch is the **source of truth** for the shared color system. It ships **exactly two** schemes, switched at runtime via `docs/app.js`. These are canonical. **Do not add, remove, rename, or recolor a scheme without explicit user approval** — no palette "refreshes," no extra themes, no token-value edits. The sister project `common-action` mirrors these; any approved change here must be propagated there.
+Common Pitch is the **origin and source of truth** for the shared color
+system. It ships **exactly two** schemes, switched at runtime via
+`docs/app.js`. These are canonical. **Do not add, remove, rename, or recolor a
+scheme without explicit user approval** — no palette "refreshes," no extra
+themes, no token-value edits. The sister project `common-action` ported these
+schemes on 2026-06-26 and must stay in sync with them; any approved change
+here propagates there, and any approved change there must match here.
 
 **Scheme A — `ultraviolet`** (default, defined on `:root`):
 
@@ -74,14 +105,32 @@ Common Pitch is the **source of truth** for the shared color system. It ships **
 | `--reverse-line` | `#a63b2b` | | `--footer-line` | `#7a251d` |
 | `--control-line` | `#d8795f` | | `--grid-line` | `rgb(104 20 12 / 0.1)` |
 
-Switcher invariants: default is `ultraviolet`; choice persists in `localStorage` key `common-pitch-theme`; an inline `<head>` bootstrap applies the stored scheme before first paint; `meta[name=theme-color]` tracks the active scheme (`#0038ff` / `#160b0a`).
+Switcher invariants: default is `ultraviolet`; choice persists in
+`localStorage` key `common-pitch-theme`; an inline `<head>` bootstrap applies
+the stored scheme before first paint; `meta[name=theme-color]` tracks the
+active scheme (`#0038ff` / `#160b0a`).
 
-## Project Rules
+## The `/consult` seam — current truth
 
-- Color schemes are locked — see **Color Schemes (Locked)** above. This project is the source of truth; changes require explicit user approval and must be propagated to `common-action`.
-- Preserve the small, static deployment surface.
-- Do not invent partners, clients, metrics, publications, or project outcomes.
-- Treat provenance, uncertainty, and update state as interface elements.
-- Avoid SaaS cards, mesh gradients, synthetic imagery, and generic AI futurism.
-- Maintain WCAG-oriented contrast, keyboard navigation, and reduced-motion compatibility.
-- Log every material change in `MEMORY.md`.
+The consultation package is generated **client-side, in `docs/app.js`** — no
+network call happens today. Checkout and scheduling are a **simulated
+mockup**: fixed dummy price, a fake payment form, a fake time-slot picker, a
+confirmation labeled as mock. There is no real payment, booking, backend, or
+email.
+
+The code is shaped so that going live means replacing the generator's body
+with a `fetch("<worker>/consult", …)` call returning the same package shape.
+The intended backend is a Cloudflare Worker calling **OpenRouter's free
+endpoint** (OpenAI-compatible `chat/completions`, a `:free` model, JSON mode
+with parse-and-validate, since free models don't guarantee strict
+`json_schema`) — the OpenRouter API key would live in a Worker secret, never
+in this repo. See `MEMORY.md` for how this seam got here.
+
+Do not claim this flow is live. Any request to "wire up the backend" or "make
+checkout real" is new work, not a bug fix — state the gap, then build it or ask.
+
+## Routing to surfaces
+
+- **`docs/`** — the production build. See `docs/AGENTS.md`.
+- **`brand/`** — the design-system spec. See `brand/AGENTS.md`.
+- **`audit/`** — source-site and QA evidence. See `audit/AGENTS.md`.
