@@ -52,6 +52,18 @@ level up; this file is common-pitch's own and stands alone without it.
 
 - **2026-06-26** — `ultraviolet` / `suited-chili` ported to `common-action`;
   common-pitch confirmed as origin and source of truth for both schemes.
+- **2026-07-12** — Added a fourth protocol card, "Make it a card." (`data-card-id="card-unit"`,
+  tab `PROTOCOL / P4`), to `docs/index.html` STACK 04, honoring the
+  `app.js` `cardData()` DOM contract exactly (two-span `.card-meta`,
+  `.card-kind`, claim as last `<p>` in `.card-body`, matching front/back
+  controls). Back face carries the repo's first external link — `Card
+  Commons` (`https://csandbatch.github.io/card-commons/`, `rel="external"`)
+  — with a `SOURCE / EXTERNAL` provenance header and an Origin/Status `dl`
+  ("Published spec, v0.1 proposal"). No new CSS; reused `.protocol-card`,
+  `.card-kind`, `.card-tab` selectors already in `styles.css`. Also fixed
+  the `INDEX / 12 CARDS / 04 STACKS` section-code label, which undercounted
+  even before this addition (13 cards existed; now 14 with the new card) —
+  now reads `INDEX / 14 CARDS / 04 STACKS`.
 - **2026-07-11** — Restructured to the working-set framework standard: added
   `SKILLS.md`, `MEMORY.md`, `EVALS.md`; thinned `CLAUDE.md` to a shim
   (`@AGENTS.md` + doctrine pointers, no doctrine of its own); compacted
